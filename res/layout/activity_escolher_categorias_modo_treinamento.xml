@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EscolherCategoriasModoTreinamento"
+    android:background="@drawable/background_popups_modo_treinamento" >
+
+    <ImageView
+	    android:id="@+id/cordasPlacaTreinamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloEscolhaAsCategoriasModoTreinamento"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cordas_placa_treinamento"
+        android:layout_marginTop="-5sp" />
+    <RelativeLayout
+        android:id="@+id/pergaminho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cordasPlacaTreinamento"
+        android:layout_marginTop="-60sp"
+        android:background="@drawable/pergaminho" >
+     <LinearLayout
+        android:id="@+id/ambas_as_listas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="80sp"
+        android:paddingLeft="90sp"
+        android:paddingRight="40sp"
+         >
+    <ListView
+        android:id="@+id/listaCategoriasPesquisaSalas1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_marginTop="40sp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="20dp"
+        android:listSelector="@android:color/transparent" 
+		android:cacheColorHint="@android:color/transparent"
+		android:adjustViewBounds="true" >
+    </ListView>
+	
+    <ListView
+        android:id="@+id/listaCategoriasPesquisaSalas2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_marginTop="40sp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="20dp"
+        android:listSelector="@android:color/transparent" 
+		android:cacheColorHint="@android:color/transparent"
+		android:adjustViewBounds="true"
+		android:layout_marginRight="20dp" >
+    </ListView>
+	</LinearLayout>
+	
+    <LinearLayout
+        android:id="@+id/botaoOkECheckbox"
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/ambas_as_listas"
+    	android:layout_centerHorizontal="true"
+    	android:layout_marginTop="40dp">
+    <RelativeLayout  
+            android:id="@+id/checkbox_e_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="90dp"
+            android:paddingBottom="120dp">
+        <ImageView
+            android:id="@+id/checkbox_mostrar_dicas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/checkbox_marcada_regras_treinamento" />
+        <TextView
+            android:id="@+id/texto_mostrar_dicas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mostrar_dicas"
+            android:layout_toRightOf="@id/checkbox_mostrar_dicas"
+            android:textSize="23sp"
+            android:layout_marginTop="15sp"
+            android:layout_marginLeft="3sp"  />
+    </RelativeLayout>
+	<Button
+    android:id="@+id/confirmar_escolha_categorias_treinamento"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="OK"
+    android:textColor="#FFFFFF"
+    android:textSize="25sp"
+    android:background="@drawable/botaomedio"
+    android:layout_marginLeft="60sp" />
+    </LinearLayout> 
+	</RelativeLayout>
+    
+    <LinearLayout 
+     android:layout_width="wrap_content"
+   	 android:layout_height="wrap_content"
+     android:id="@+id/tituloEscolhaAsCategoriasModoTreinamento"
+     android:background="@drawable/plaquinha_treinamento"
+     android:layout_centerHorizontal="true"
+     android:gravity="center" >
+
+     <TextView 
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" 
+      android:textSize="40sp" 
+      android:singleLine="true" 
+      android:layout_marginTop="20sp"
+      android:text="@string/treinamento_e_kanji"
+      android:id="@+id/textoTituloEscolhaAsCategoriasModoTreinamento"/>
+	</LinearLayout>
+
+</RelativeLayout>

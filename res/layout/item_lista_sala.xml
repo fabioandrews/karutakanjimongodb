@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/uma_linha_buscar_salas"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="35dp"
+    android:orientation="horizontal"
+    android:background="@drawable/white_header" >
+
+    		
+
+    		<ImageView
+    		    android:id="@+id/titulo_do_jogador"
+    		   	android:layout_width="0px"
+    		    android:layout_weight="1"
+    		    android:layout_height="wrap_content"
+    		    android:gravity="center"
+    		    android:layout_gravity="center"
+    		    android:src="@drawable/icone_dan_1" />
+    		<TextView
+    		    android:id="@+id/username"
+    		    android:layout_width="0px"
+    		    android:layout_weight="3"
+    		    android:layout_height="wrap_content"
+    		    android:gravity="center"
+    		    android:layout_gravity="center"
+    		    android:text="fabio_andrews"
+    		    android:textColor="#000000"/>
+    		
+    		<RelativeLayout android:id="@+id/icone_categorias_e_quantas_sao" 
+    		    android:layout_width="0px"
+    		    android:layout_weight="1"
+    		    android:layout_height="wrap_content"
+    		    android:layout_gravity="center"
+    		    android:gravity="center">
+
+    		<ImageView
+    		    android:id="@+id/campo_categorias"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:src="@drawable/icone_abre_popup_categorias_sala_casual" />
+    		<TextView
+    		    android:id="@+id/quantas_categorias_tem_a_sala"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:text="12"
+    		    android:layout_toRightOf="@id/campo_categorias"
+    		    android:layout_alignBottom="@id/campo_categorias" />
+
+    		</RelativeLayout>
+    		<ImageView android:id="@+id/icone_entrar_sala_casual"
+    		    android:layout_width="0px"
+    		    android:layout_weight="1"
+    		    android:layout_height="wrap_content"
+    		    android:layout_gravity="center"
+    		    android:gravity="center"
+    		    android:src="@drawable/icone_entrar_sala_casual"
+    		    />
+	
+
+
+    		
+
+</LinearLayout>

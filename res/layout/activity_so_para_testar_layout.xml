@@ -1,0 +1,241 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idqualquersotestarlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_popups_modo_treinamento"
+    tools:context=".MainActivity" >
+   
+<LinearLayout 
+                 android:layout_width="wrap_content"
+   				 android:layout_height="wrap_content"
+    			android:id="@+id/tituloTreinamento"
+    			android:background="@drawable/plaquinha_treinamento"
+    			android:layout_centerHorizontal="true"
+                android:gravity="center" >
+
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" 
+                    android:textSize="50sp" 
+                    android:singleLine="true" 
+                    android:layout_marginTop="20sp"
+                    android:text="@string/modo_treinamento"
+                    android:id="@+id/textoTituloTreinamento"/>
+	</LinearLayout>
+	<ImageView
+	    android:id="@+id/cordasPlacaTreinamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTreinamento"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cordas_placa_treinamento"
+        android:layout_marginTop="-5sp" />
+ <RelativeLayout
+        android:id="@+id/pergaminho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cordasPlacaTreinamento"
+        android:layout_marginTop="-60sp"
+        android:background="@drawable/pergaminho"
+        android:layout_centerHorizontal="true" >
+<TextView
+            android:id="@+id/titulo_tela_observacao_novos_kanjis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingLeft="10sp"
+            android:layout_marginTop="120sp"
+            android:text="@string/aviso_ultimos_kanjis_modo_treinamento"
+            android:textSize="30sp"
+            android:layout_centerHorizontal="true" />
+
+	<LinearLayout
+	    android:id="@+id/ultimokanji1TudoJunto"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titulo_tela_observacao_novos_kanjis"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true">
+	<RelativeLayout
+	    android:id="@+id/ultimokanji1FuriganaEKanji"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+    <TextView
+        android:id="@+id/ultimoKanji1Furigana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:text="かんじ" />
+    <TextView
+        android:id="@+id/ultimokanji1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@id/ultimoKanji1Furigana"
+        android:layout_centerHorizontal="true"
+        android:text="漢字" />
+	</RelativeLayout>
+	
+	<TextView 
+	    android:id="@+id/ultimoKanji1Traducao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20sp"
+        android:text="=   kanji" />
+	
+	</LinearLayout>
+	
+    <TextView
+        android:id="@+id/observacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ultimokanji4TudoJunto"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textColor="#990000"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/observacao_mais_uma_carta" />
+
+    <LinearLayout
+	    android:id="@+id/ultimokanji2TudoJunto"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ultimokanji1TudoJunto"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true">
+	<RelativeLayout
+	    android:id="@+id/ultimokanji2FuriganaEKanji"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+    <TextView
+        android:id="@+id/ultimoKanji2Furigana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:text="かんじ" />
+    <TextView
+        android:id="@+id/ultimokanji2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@id/ultimoKanji2Furigana"
+        android:layout_centerHorizontal="true"
+        android:text="漢字" />
+	</RelativeLayout>
+	
+	<TextView 
+	    android:id="@+id/ultimoKanji2Traducao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20sp"
+        android:text="=   kanji" />
+	
+	</LinearLayout>
+
+    <LinearLayout
+	    android:id="@+id/ultimokanji3TudoJunto"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ultimokanji2TudoJunto"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true">
+	<RelativeLayout
+	    android:id="@+id/ultimokanji3FuriganaEKanji"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+    <TextView
+        android:id="@+id/ultimoKanji3Furigana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:text="かんじ" />
+    <TextView
+        android:id="@+id/ultimokanji3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@id/ultimoKanji3Furigana"
+        android:layout_centerHorizontal="true"
+        android:text="漢字" />
+	</RelativeLayout>
+	
+	<TextView 
+	    android:id="@+id/ultimoKanji3Traducao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20sp"
+        android:text="=   kanji" />
+	
+	</LinearLayout>
+
+    <LinearLayout
+	    android:id="@+id/ultimokanji4TudoJunto"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ultimokanji3TudoJunto"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true">
+	<RelativeLayout
+	    android:id="@+id/ultimokanji4FuriganaEKanji"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+    <TextView
+        android:id="@+id/ultimoKanji4Furigana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:text="かんじ" />
+    <TextView
+        android:id="@+id/ultimokanji4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_below="@id/ultimoKanji4Furigana"
+        android:layout_centerHorizontal="true"
+        android:text="漢字" />
+	</RelativeLayout>
+	
+	<TextView 
+	    android:id="@+id/ultimoKanji4Traducao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20sp"
+        android:text="=   kanji" />
+	
+	</LinearLayout>
+
+    <Button
+        android:id="@+id/botaook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/observacao"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="OK"
+        android:background="@drawable/botaomedio"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:onClick="mostrarTelaModoTreinamento" /> 
+</RelativeLayout> 
+    
+
+
+</RelativeLayout>

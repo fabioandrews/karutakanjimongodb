@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MostrarRegrasModoTreinamento"
+    android:background="@drawable/background_popups_modo_treinamento" >
+
+    <LinearLayout 
+                 android:layout_width="wrap_content"
+   				 android:layout_height="wrap_content"
+    			android:id="@+id/tituloTreinamento"
+    			android:background="@drawable/plaquinha_treinamento"
+    			android:layout_centerHorizontal="true"
+                android:gravity="center" >
+
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" 
+                    android:textSize="40sp" 
+                    android:singleLine="true" 
+                    android:layout_marginTop="20sp"
+                    android:text="@string/treinamento_e_kanji"
+                    android:id="@+id/textoTituloTreinamento"/>
+	</LinearLayout>
+	<ImageView
+	    android:id="@+id/cordasPlacaTreinamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTreinamento"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/cordas_placa_treinamento"
+        android:layout_marginTop="-5sp" />
+
+    <RelativeLayout
+        android:id="@+id/pergaminho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cordasPlacaTreinamento"
+        android:layout_marginTop="-60sp"
+        android:background="@drawable/pergaminho" >
+
+        <TextView
+            android:id="@+id/instrucoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220sp"
+            android:layout_marginRight="90sp"
+            android:gravity="center"
+            android:layout_marginTop="110sp"
+            android:text="@string/instrucoes"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/descricao_modo_treinamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instrucoes"
+            android:layout_marginLeft="110sp"
+            android:layout_marginRight="90sp"
+            android:layout_marginTop="40sp"
+            android:gravity="center"
+            android:text="@string/descricao_modo_treinamento"
+            android:textSize="27sp" />
+
+        <Button
+            android:id="@+id/botao_proximo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descricao_modo_treinamento"
+            android:layout_marginLeft="265sp"
+            android:layout_marginRight="90sp"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="@string/proximo"
+    		android:textColor="#FFFFFF"
+    		android:textSize="20sp"
+   		    android:background="@drawable/botaomedio"
+   		    android:onClick="escolherCategoriasTreinamento" />
+	
+        <RelativeLayout  
+            android:id="@+id/checkbox_e_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="90dp"
+            android:paddingBottom="120dp">
+        <ImageView
+            android:id="@+id/checkbox_nao_mostrar_novamente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/checkbox_desmarcada_regras_treinamento" />
+        <TextView
+            android:id="@+id/texto_nao_mostrar_novamente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nao_aparecer_de_novo"
+            android:layout_toRightOf="@id/checkbox_nao_mostrar_novamente"
+            android:textSize="23sp"
+            android:layout_marginTop="15sp"
+            android:layout_marginLeft="3sp"  />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

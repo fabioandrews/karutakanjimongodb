@@ -1,0 +1,887 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModoCasual" >
+<LinearLayout android:id="@+id/screen_sign_in" style="@style/LLScreen">
+        <TextView style="@style/GameTitle" />
+        <TextView style="@style/GameBlurb" />
+
+        <Button android:id="@+id/button_single_player"
+            style="@style/MainScreenButton"
+            android:text="@string/single_player" />
+        <com.google.android.gms.common.SignInButton android:id="@+id/button_sign_in"
+            style="@style/SignInButton" />
+    </LinearLayout>
+
+   
+
+    <!-- INVITATION POPUP -->
+    <LinearLayout android:id="@+id/invitation_popup" style="@style/InvPopup">
+        <TextView android:id="@+id/incoming_invitation_text" style="@style/InvPopupText" />
+        <Button android:id="@+id/button_accept_popup_invitation"
+            style="@style/InvPopupButton"
+            android:text="@string/accept_popup_invite" />
+    </LinearLayout>
+
+    <!-- "PLEASE WAIT" SCREEN -->
+    <LinearLayout android:id="@+id/screen_wait" style="@style/LLScreen">
+        <TextView style="@style/Blurb" android:text="@string/please_wait" />
+    </LinearLayout>
+
+    <!-- GAMEPLAY SCREEN -->
+    <RelativeLayout android:id="@+id/screen_game" style="@style/LLScreen" >
+    <com.karutakanji.MyImageView
+        android:id="@+id/karuta1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="98dp"
+        android:src="@drawable/karuta" />
+	</RelativeLayout>
+	
+    <!-- tela lobby modo casual -->
+    <RelativeLayout android:id="@+id/tela_lobby_modo_casual"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.phiworks.sumosenseinew.EscolhaNivelActivity$PlaceholderFragment" >
+    <TextView
+        android:id="@+id/tituloModoCasual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="@string/modo_casual"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <Button
+        android:id="@+id/botaoReload"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/botaoCriarNovaSala"
+        android:layout_below="@+id/tituloModoCasual"
+        android:layout_toRightOf="@+id/botaoCriarNovaSala"
+        android:text="@string/recarregar"
+        android:onClick="recarregarSalas" />
+    
+	<RelativeLayout
+	    android:id="@+id/spinnerELabelPesquisarSalas"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/tituloModoCasual"
+	    android:layout_marginTop="10sp" >
+
+    <TextView
+        android:id="@+id/labelPesquisarSalas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="28dp"
+        android:text="@string/pesquisar_salas_por"
+        android:layout_centerVertical="true"
+        android:textSize="20sp"/>
+
+    <Spinner
+        android:id="@+id/spinnerPesquisarSalasModoCasual"
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:layout_toRightOf="@id/labelPesquisarSalas"
+        android:layout_alignTop="@+id/labelPesquisarSalas"/>
+	</RelativeLayout>
+	<TextView android:id="@+id/alerta_salas_novas"
+	    		android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:text="@string/alerta_novas_salas_criadas"
+	    		android:layout_below="@+id/botaoCriarNovaSala"
+	    		android:textSize="17sp"
+	    		android:layout_marginLeft="28dp"
+	    		android:layout_marginTop="30dp"
+	    		android:visibility="invisible" />
+	
+     <LinearLayout android:id="@+id/cabecalho_tabela_listar_salas"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:orientation="horizontal"
+    android:background="@drawable/red_header"
+    android:layout_below="@+id/alerta_salas_novas" >
+    	
+         <TextView
+    		    android:id="@+id/label_titulo_do_jogador"
+    		    android:layout_width="0px"
+    		    android:layout_weight="1"
+    		    android:layout_height="wrap_content"
+    		    android:gravity="center"
+    		    android:layout_gravity="center"
+    		    android:text="@string/dan"
+    		    android:textColor="#FFFFFF" />
+    	<TextView
+    		    android:id="@+id/label_titulo_username"
+    		    android:layout_width="0px"
+    		    android:layout_weight="3"
+    		    android:layout_height="wrap_content"
+    		    android:gravity="center"
+    		    android:layout_gravity="center"
+    		    android:text="@string/email"
+    		    android:textColor="#FFFFFF" />
+
+    		<TextView
+    		    android:id="@+id/label_categorias_selecionadas"
+    		    android:layout_width="0px"
+    		    android:layout_weight="1"
+    		    android:layout_height="wrap_content"
+    		    android:layout_gravity="center"
+    		    android:gravity="center"
+    		    android:text="@string/categorias"
+    		    android:textColor="#FFFFFF" />
+    		
+    		<TextView
+    		    android:id="@+id/label_entrar_na_sala"
+    		    android:layout_width="0px"
+    		    android:layout_weight="1"
+    		    android:layout_height="wrap_content"
+    		    android:layout_gravity="center"
+    		    android:gravity="center"
+    		    android:text=""
+    		    android:textColor="#FFFFFF" />
+
+   	</LinearLayout>
+   	
+    <ListView
+        android:id="@+id/lista_salas_abertas"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cabecalho_tabela_listar_salas"
+        android:layout_alignRight="@+id/cabecalho_tabela_listar_salas"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/cabecalho_tabela_listar_salas"
+        android:fastScrollEnabled="true"
+        android:fastScrollAlwaysVisible="true"
+        android:scrollbarStyle="insideInset"
+        android:listSelector="@android:color/transparent" >
+    </ListView>
+
+    <Button
+        android:id="@+id/botaoCriarNovaSala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerELabelPesquisarSalas"
+        android:layout_centerHorizontal="true"
+        android:onClick="abrirTelaCriarNovaSala"
+        android:text="@string/criar_nova_sala" />
+    </RelativeLayout>
+    
+    <!-- TELA DE ESCOLHA UMA CATEGORIA CRIAR NOVA SALA -->
+    <RelativeLayout android:id="@+id/tela_escolha_categoria_criar_nova_sala"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.phiworks.sumosenseinew.EscolhaNivelActivity$PlaceholderFragment" >
+    <ListView
+        android:id="@+id/listaCategorias"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginBottom="88dp"
+        android:layout_toLeftOf="@+id/ok_button_criar_nova_sala" >
+    </ListView>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/nihonball" />
+
+    <TextView
+        android:id="@+id/tituloEscolhaCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/titulo_escolha_categoria"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ok_button_criar_nova_sala"
+        android:layout_alignRight="@+id/tituloEscolhaCategoria"
+        android:layout_marginBottom="120dp"
+        android:text="@string/escolha_a_duracao" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginTop="23dp"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/uma_rodada"
+            android:onClick="onRadioButtonClicked" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioButton1"
+            android:layout_below="@+id/radioButton1"
+            android:text="@string/duas_rodadas"
+            android:onClick="onRadioButtonClicked" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/radioButton2"
+            android:text="@string/tres_rodadas"
+            android:onClick="onRadioButtonClicked" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/radioButton3"
+            android:layout_below="@+id/radioButton3"
+            android:text="@string/infinitas_rodadas"
+            android:onClick="onRadioButtonClicked" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/ok_button_criar_nova_sala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/radioGroup1"
+        android:text="OK" 
+        android:onClick="quemEscolheCategoriasClicouNoBotaoOkCriacaoDeSala"/>
+	</RelativeLayout>
+    
+    
+    
+    <!-- tela decidindo quem ira escolher categoria-->
+    <LinearLayout android:id="@+id/decidindoQuemEscolheACategoria" style="@style/LLScreen">
+        <TextView style="@style/Blurb" android:text="@string/decidindo_quem_escolhe_a_categoria" />
+    </LinearLayout>
+    
+    
+	
+    
+	
+    <!-- TELA DO JOGO MULTIPLAYER -->
+   	<RelativeLayout android:id="@+id/tela_jogo_multiplayer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tatame" >
+    <TextView
+        android:id="@+id/tempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tempo"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+    	android:layout_alignParentTop="true"
+        android:text="@string/tempo_restante"
+        android:textStyle="bold"
+        android:textSize="30sp"  />
+    
+     <ImageView
+        android:id="@+id/parartempopequeno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tempo"
+        android:layout_toRightOf="@+id/tempo"
+        android:src="@drawable/parartempopequeno" />
+     
+
+	<TableLayout 
+	    android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+        android:id="@+id/todas_as_cartas"
+        android:layout_below="@+id/mascote"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/tatame_menor"
+        android:gravity="center"
+        >
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/karuta1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             >
+
+            <ImageView
+                android:id="@+id/karuta1_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/karutavazia" />
+
+            <TextView
+                android:id="@+id/texto_karuta1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta1"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2"
+                 />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/karuta2"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta2_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta2"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/karuta3"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta3_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta3"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/karuta4"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta4_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta4"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp" >
+
+        <RelativeLayout
+            android:id="@+id/karuta5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta5_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta5"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/karuta6"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta6_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta6"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/karuta7"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta7_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta7"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/karuta8"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/karuta8_imageview"
+                android:layout_width="wrap_content"
+                android:src="@drawable/karutavazia"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/texto_karuta8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:text="@string/texto_karuta8"
+                android:textStyle="bold"
+                android:textSize="29sp"
+                 android:shadowColor="#ffffff"
+				android:shadowRadius="5"
+				android:shadowDx="2"  
+    			android:shadowDy="2" />
+        </RelativeLayout>
+    </TableRow>
+    </TableLayout>
+    
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/todas_as_cartas"
+	    android:background="@drawable/barradeitens"
+	    android:id="@+id/barradeitens"
+	    android:gravity="center"
+	    android:layout_centerInParent="true"
+	    android:layout_marginTop="-35dp"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginRight="30dp"
+	    >
+    
+        <ImageView
+      android:id="@+id/item1" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="7dp"
+      />
+        <ImageView
+      android:id="@+id/item2" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item1"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item3" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item2"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item4" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item3"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item5" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item4"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item6" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item5"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item7" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item6"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item8" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item7"
+      android:layout_marginLeft="10dp"/>
+        <ImageView
+      android:id="@+id/item9" 
+      android:src="@drawable/nenhumitem"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/item8"
+      android:layout_marginLeft="10dp"/>
+    </RelativeLayout>
+    
+	<RelativeLayout
+	    android:id="@+id/foto_e_pontuacao_jogador_esquerda"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/barradeitens"
+	    android:layout_alignParentLeft="true"
+	    android:layout_marginTop="25dp"
+	    android:layout_marginLeft="30dp" >
+  <ImageView
+      android:src="@drawable/foto_jogador_esquerda"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/foto_jogador_esquerda"
+      android:adjustViewBounds="true"
+      />
+  <RelativeLayout
+      android:background="@drawable/pontuacao_jogador_esquerda"
+      android:layout_width="120dp"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/foto_jogador_esquerda"
+      android:layout_centerVertical="true"
+      android:gravity="center">
+  <TextView
+      android:id="@+id/nome_e_pontuacao_jogador_esquerda"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text=""
+      android:textSize="14sp"
+      android:textStyle="bold"
+      android:layout_marginRight="10dp"
+      android:layout_marginLeft="2dp"
+      android:layout_marginTop="7dp"
+      android:layout_marginBottom="7dp"
+      />
+  </RelativeLayout>
+
+  </RelativeLayout>
+	<ImageView
+	    android:id="@+id/doisxpequeno"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/foto_e_pontuacao_jogador_esquerda"
+	    android:layout_marginLeft="7dp"
+	    android:layout_alignTop="@id/foto_e_pontuacao_jogador_esquerda"
+	    android:src="@drawable/doisxpequeno" />
+	<ImageView
+	    android:id="@+id/naoesperemais"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/foto_e_pontuacao_jogador_esquerda"
+	    android:layout_marginLeft="7dp"
+	    android:layout_alignTop="@id/foto_e_pontuacao_jogador_esquerda"
+	    android:src="@drawable/naoesperemaispequeno" />
+	
+  <RelativeLayout
+	    android:id="@+id/foto_e_pontuacao_jogador_direita"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/barradeitens"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginTop="25dp"
+	    android:layout_marginRight="30dp"  >
+  <RelativeLayout
+      android:background="@drawable/pontuacao_jogador_direita"
+      android:layout_width="120dp"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:id="@+id/label_nome_e_pontuacao_jogador_direita">
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:id="@+id/nome_e_pontuacao_jogador_direita"
+      android:text=""
+      android:textSize="14sp"
+      android:textStyle="bold"
+      android:layout_marginLeft="14dp"
+      android:layout_marginTop="7dp"
+      android:layout_marginBottom="7dp"
+      android:gravity="right"
+      />
+  </RelativeLayout>
+  <ImageView
+      android:src="@drawable/foto_jogador_direita"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/label_nome_e_pontuacao_jogador_direita"
+      android:id="@+id/foto_jogador_direita"
+      android:adjustViewBounds="true"
+      />
+  </RelativeLayout>
+  
+  <TextView 
+      android:id="@+id/rodada"
+      android:background="@drawable/label_rodada"
+      android:layout_above="@id/todas_as_cartas"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="-130dp"
+      android:text="@string/rodada_sem_dois_pontos"
+      android:gravity="center"
+      android:textStyle="bold"
+      android:textSize="40sp"/>
+
+      <RelativeLayout 
+  	    android:id="@+id/dica_kanji_e_balao"
+  	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/balaofalamelhor"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:layout_toLeftOf="@+id/mascote" 
+  	    >
+	<TableLayout
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:gravity="center_horizontal"
+         android:layout_marginRight="70sp"
+         >
+  	<TableRow>
+        <TextView
+            android:id="@+id/dica_kanji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center"
+            android:textSize="25sp" />
+    </TableRow>
+    <TableRow>   
+         <TextView
+            android:id="@+id/dica_kanji_traducao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_below="@id/dica_kanji" />
+    </TableRow>
+	</TableLayout>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/mascote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/mascote" />       
+	
+    </RelativeLayout>    
+        
+    <!-- TELA FIM DE JOGO -->
+	<RelativeLayout 
+    android:id="@+id/tela_fim_de_jogo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <TextView
+        android:id="@+id/tituloTelaFimDeJogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tituloTelaFimDeJogo"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textoSuaPontuacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTelaFimDeJogo"
+        android:layout_marginTop="15dp"
+        android:text="@string/suaPontuacao" />
+
+    <TextView
+        android:id="@+id/textoPontuacaoAdversario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textoSuaPontuacao"
+        android:layout_marginTop="14dp"
+        android:text="@string/pontuacaoDoAdversario" />
+    
+    <ListView
+      android:id="@+id/mensagens_chat"
+      android:layout_width="wrap_content"
+      android:layout_height="66dp"
+      android:layout_alignLeft="@+id/chatET"
+      android:layout_alignRight="@+id/sendBtn"
+      android:layout_alignParentBottom="true"
+      android:layout_below="@+id/chatET"
+      android:scrollbars="horizontal" >
+</ListView>
+
+  <Button
+      android:id="@+id/sendBtn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_below="@+id/textoPontuacaoAdversario"
+      android:layout_toRightOf="@+id/chatET"
+      android:text="@string/enviar_mensagem"
+      android:textStyle="bold"
+      android:onClick="mandarMensagemChat" />
+
+  <Button
+      android:id="@+id/botao_menu_principal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignRight="@+id/textoPontuacaoAdversario"
+      android:layout_marginRight="40dp"
+      android:text="@string/menu_principal" />
+
+  <Button
+      android:id="@+id/botao_revanche"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@+id/botao_menu_principal"
+      android:text="@string/revanche" />
+
+  <EditText
+      android:id="@+id/chatET"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/textoPontuacaoAdversario"
+      android:layout_below="@+id/textoPontuacaoAdversario"
+      android:layout_alignRight="@+id/tituloTelaFimDeJogo"
+      android:ems="10"
+      android:hint="@string/instrucao_chat"
+      android:scrollHorizontally="true" />
+
+	</RelativeLayout>
+    
+</RelativeLayout>

@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/telainicialnormal">
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/modo_casual"
+        android:onClick="irAoModoCasual" />
+
+    <RelativeLayout 
+  	    android:id="@+id/dica_kanji_e_balao"
+  	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/balaofalamelhor"
+        android:layout_marginTop="110dp"
+        android:gravity="center"
+        android:layout_toLeftOf="@+id/mascote" 
+  	    >
+	<TableLayout
+	     android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:gravity="center_horizontal"
+         android:layout_marginRight="70sp"
+         >
+  	<TableRow>
+        <TextView
+            android:id="@+id/dica_kanji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karuta Kanji"
+            android:gravity="center"
+            android:textSize="40sp" />
+    </TableRow>
+	</TableLayout>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/mascote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="85dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/mascote" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/treinamento"
+        android:onClick="irAoModoTreinamento" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/titulo_lojinha"
+        android:onClick="irALojinha" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:onClick="irADadosPartidasAnteriores"
+        android:text="@string/dados_partidas_anteriores" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="adicionar dinheirinho"
+        android:onClick="adicionarDinheirinho" />
+    
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/configuracoes"
+        android:onClick="irParaConfiguracoes" />
+    
+    <TextView
+        android:id="@+id/textAvisaAoUsuarioFaltaDeConexao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:textSize="20sp"
+        android:text="" />
+    
+	</RelativeLayout>
+	
+    <!-- TELA QUE AVISA AO JOGADOR PARA ATUALIZAR PARA VERSAO MAIS ATUAL -->
+    <RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/telaatualizeojogo">
+    <TextView
+        android:id="@+id/mensagemAtualizeOJogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:textSize="20sp"
+        android:text="@string/mensagem_por_favor_atualize_o_jogo" />
+    </RelativeLayout>
+</RelativeLayout>
