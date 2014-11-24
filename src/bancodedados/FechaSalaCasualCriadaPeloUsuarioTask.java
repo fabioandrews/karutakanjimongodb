@@ -39,7 +39,8 @@ public class FechaSalaCasualCriadaPeloUsuarioTask extends AsyncTask<String, Stri
 		
 		try
 		{
-			MongoClient mongo = new MongoClient("192.168.0.109", 27017);
+			//"192.168.0.101"
+			MongoClient mongo = new MongoClient("10.5.26.231", 27017);
 			DB db = mongo.getDB("pairg_karutakanji_app");
 			DBCollection collection = db.getCollection("salasmodocasual");
 			BasicDBObject searchByEmailCriador = new BasicDBObject("emaildocriador", email_do_criador);

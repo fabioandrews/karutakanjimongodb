@@ -1294,6 +1294,10 @@ private void realizarAnimacaoAumentaPontuacao(int dificuldadeDoKanji, boolean eh
 
 void startQuickGame(int variant) 
 {
+	if(variant < 0)
+	 {
+			variant = -variant;
+	 }
 // quick-start a game with 1 randomly selected opponent
 	
 	//ambos os jogadores ja sairam do lobby das salas do modo casual, entao pode matar a thread que atualizava as salas
@@ -5234,14 +5238,14 @@ private void solicitarPorKanjisPraTreino() {
 	 //enviaremos as informacoes da partida num log que escreveremos para o usuário e salvaremos num servidor remoto
 	 DadosPartidaParaOLog dadosPartida = new DadosPartidaParaOLog();
 	 HashMap<String,LinkedList<KanjiTreinar>> categoriasEKanjis = SingletonGuardaDadosDaPartida.getInstance().getCategoriasEscolhidasEKanjisDelas();
-	 String categoriasEmString = "";
 	 Iterator<String> iteradorCategorias = categoriasEKanjis.keySet().iterator();
+	 LinkedList<String> categorias = new LinkedList<String>();
 	 while(iteradorCategorias.hasNext() == true)
 	 {
-		 categoriasEmString = categoriasEmString + iteradorCategorias.next() + ";";
+		 categorias.add(iteradorCategorias.next());
 	 }
 	 
-	 dadosPartida.setCategoria(categoriasEmString);
+	 dadosPartida.setCategoria(categorias);
 	 
 	 Calendar c = Calendar.getInstance();
 	 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -5650,6 +5654,11 @@ public LinkedList<SalaModoCasual> getSalasAbertas()
  {
 	 salaAtual = salaVaiEntrar;
 	 int id_sala = salaAtual.getId_sala();
+	 if(id_sala < 0)
+	 {
+			id_sala = -id_sala;
+			salaAtual.setId_sala(id_sala);
+	 }
 	 startQuickGame(id_sala);
  }
  

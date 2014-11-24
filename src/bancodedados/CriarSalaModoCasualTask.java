@@ -63,8 +63,8 @@ public class CriarSalaModoCasualTask extends AsyncTask<SalaModoCasual, String, S
 		try
 		{
 			//primeiro vamos criar a sala sem as categorias
-			
-			MongoClient mongo = new MongoClient("192.168.0.109", 27017);
+			//"192.168.0.101"
+			MongoClient mongo = new MongoClient("10.5.26.231", 27017);
 			DB db = mongo.getDB("pairg_karutakanji_app");
 			DBCollection collection = db.getCollection("salasmodocasual");
 			BasicDBObject document = new BasicDBObject();
@@ -93,7 +93,7 @@ public class CriarSalaModoCasualTask extends AsyncTask<SalaModoCasual, String, S
 				{
 					//encontramos a sala aberta criada agora pouco
 					ObjectId idSalaMongo = (ObjectId) objetoDB.get( "_id" );
-					this.id_sala_em_int = idSalaMongo.getCurrentInc();
+					this.id_sala_em_int = idSalaMongo._inc();
 					if(this.id_sala_em_int < 0)
 					{
 						this.id_sala_em_int = -this.id_sala_em_int;

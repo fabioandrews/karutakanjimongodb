@@ -109,7 +109,7 @@ public class DadosPartidasAnteriores extends ActivityDoJogoComSom implements Act
 	        	String labelCategorias = getResources().getString(R.string.categorias);
 	        	String labelDataPartida = getResources().getString(R.string.data_da_partida);
 	        	
-	        	String categoriasComVirgulas = this.partidasAnteriores.get(i).getCategoria().replaceAll(";", ",");
+	        	String categoriasComVirgulas = this.partidasAnteriores.get(i).getCategoriaEmString().replaceAll(";", ",");
 	        	String ultimoCaractereDasCategorias = String.valueOf(categoriasComVirgulas.charAt(categoriasComVirgulas.length() - 1));
 	        	if(ultimoCaractereDasCategorias.compareTo(",") == 0)
 	        	{

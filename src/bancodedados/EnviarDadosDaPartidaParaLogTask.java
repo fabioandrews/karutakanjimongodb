@@ -36,27 +36,52 @@ public class EnviarDadosDaPartidaParaLogTask extends AsyncTask<DadosPartidaParaO
 	protected String doInBackground(DadosPartidaParaOLog... dadosPartida) 
 	{
 		DadosPartidaParaOLog umDadosPartida = dadosPartida[0];
-		String categoria = umDadosPartida.getCategoria();
+		String categoria = umDadosPartida.getCategoriaEmString();
+		String [] categoriaSplitadaPontoEVirgula = categoria.split(";");
+		List<String> categoriasPraMongo = new ArrayList<String>();
+		for(int u = 0; u < categoriaSplitadaPontoEVirgula.length; u++)
+		{
+			String umaCategoria = categoriaSplitadaPontoEVirgula[u];
+			categoriasPraMongo.add(umaCategoria);
+			
+		}
 		String email = umDadosPartida.getEmail();
 		String data = umDadosPartida.getData();
 		java.lang.Integer pontuacao = umDadosPartida.getPontuacao();
 		
 		LinkedList<KanjiTreinar> palavrasAcertadas = umDadosPartida.getPalavrasAcertadas();
-		String palavrasacertadas = 
-				this.transformarLinkedListKanjisEmString(palavrasAcertadas);
+		List<BasicDBObject> palavrasAcertadasPraMongo = new ArrayList<BasicDBObject>();
+		for(int y = 0; y < palavrasAcertadas.size(); y++)
+		{
+			KanjiTreinar umaPalavraAcertada = palavrasAcertadas.get(y);
+			BasicDBObject novoObjetoKanji = new BasicDBObject();
+			novoObjetoKanji.append("kanji", umaPalavraAcertada.getKanji());
+			novoObjetoKanji.append("categoria", umaPalavraAcertada.getCategoriaAssociada());
+			palavrasAcertadasPraMongo.add(novoObjetoKanji);
+		}
 		
 		LinkedList<KanjiTreinar> palavrasErradas = umDadosPartida.getPalavrasErradas();
-		String palavraserradas = 
-				this.transformarLinkedListKanjisEmString(palavrasErradas);
+		List<BasicDBObject> palavrasErradasPraMongo = new ArrayList<BasicDBObject>();
+		for(int y = 0; y < palavrasErradas.size(); y++)
+		{
+			KanjiTreinar umaPalavraErrada = palavrasErradas.get(y);
+			BasicDBObject novoObjetoKanji = new BasicDBObject();
+			novoObjetoKanji.append("kanji", umaPalavraErrada.getKanji());
+			novoObjetoKanji.append("categoria", umaPalavraErrada.getCategoriaAssociada());
+			palavrasErradasPraMongo.add(novoObjetoKanji);
+		}
 		
 		LinkedList<KanjiTreinar> palavrasJogadas = umDadosPartida.getPalavrasJogadas();
-		List<String> palavrasJogadasPraMongo = new ArrayList<String>();
+		List<BasicDBObject> palavrasJogadasPraMongo = new ArrayList<BasicDBObject>();
 		for(int y = 0; y < palavrasJogadas.size(); y++)
 		{
 			KanjiTreinar umaPalavraJogada = palavrasJogadas.get(y);
-			String kanjiEmString = umaPalavraJogada.getKanji() + "|" + umaPalavraJogada.getCategoriaAssociada();
-			palavrasJogadasPraMongo.add(kanjiEmString);
+			BasicDBObject novoObjetoKanji = new BasicDBObject();
+			novoObjetoKanji.append("kanji", umaPalavraJogada.getKanji());
+			novoObjetoKanji.append("categoria", umaPalavraJogada.getCategoriaAssociada());
+			palavrasJogadasPraMongo.add(novoObjetoKanji);
 		}
+		
 		String jogoassociado = umDadosPartida.getJogoAssociado();
 		
 		String emailadversario = umDadosPartida.geteMailAdversario();
@@ -64,17 +89,18 @@ public class EnviarDadosDaPartidaParaLogTask extends AsyncTask<DadosPartidaParaO
 		
 		try
 		{
-			MongoClient mongo = new MongoClient("192.168.0.109", 27017);
+			//"192.168.0.101"
+			MongoClient mongo = new MongoClient("10.5.26.231", 27017);
 			DB db = mongo.getDB("pairg_karutakanji_app");
 			DBCollection collection = db.getCollection("partidas");
 			BasicDBObject document = new BasicDBObject();
 			
-			document.append("categoria", categoria);
+			document.append("categoria", categoriasPraMongo);
 			document.append("email", email);
 			document.append("data", data);
 			document.append("pontuacao", pontuacao);
-			document.append("palavrasacertadas", palavrasacertadas);
-			document.append("palavraserradas", palavraserradas);
+			document.append("palavrasacertadas", palavrasAcertadasPraMongo);
+			document.append("palavraserradas", palavrasErradasPraMongo);
 			document.append("palavrasjogadas", palavrasJogadasPraMongo);
 			document.append("jogoassociado", jogoassociado);
 			document.append("emailadversario", emailadversario);

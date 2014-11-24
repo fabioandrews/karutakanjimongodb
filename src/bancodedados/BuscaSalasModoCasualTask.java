@@ -63,7 +63,8 @@ public class BuscaSalasModoCasualTask extends AsyncTask<String, String, Void>
 
 		        try 
 		        {
-		        	MongoClient mongo = new MongoClient("192.168.0.109", 27017);
+		        	//"192.168.0.101"
+		        	MongoClient mongo = new MongoClient("10.5.26.231", 27017);
 					DB db = mongo.getDB("pairg_karutakanji_app");
 					DBCollection collection = db.getCollection("salasmodocasual");
 					DBObject searchBySalaAberta = new BasicDBObject("salaaberta", "sim");
@@ -74,7 +75,7 @@ public class BuscaSalasModoCasualTask extends AsyncTask<String, String, Void>
 		            {
 		            	DBObject objetoDB = cursor.next();
 		            	ObjectId idSalaMongo = (ObjectId) objetoDB.get( "_id" );
-						int id_sala = idSalaMongo.getCurrentInc();
+		            	int id_sala = idSalaMongo._inc();
 						if(id_sala < 0)
 						{
 							id_sala = -id_sala;

@@ -78,7 +78,7 @@ public class MostrarDadosUmaPartida extends ActivityDoJogoComSom implements View
 		
 		textViewPontuacao.setText(labelSuaPontuacao + " " + String.valueOf(this.dadosUmaPartida.getPontuacao()));
 		
-		String categoriasSeparadasPorVirgulas = this.dadosUmaPartida.getCategoria().replaceAll(";", ",");
+		String categoriasSeparadasPorVirgulas = this.dadosUmaPartida.getCategoriaEmString().replaceAll(";", ",");
 		String ultimoCaractereDasCategorias = String.valueOf(categoriasSeparadasPorVirgulas.charAt(categoriasSeparadasPorVirgulas.length() - 1));
 		if(ultimoCaractereDasCategorias.compareTo(",") == 0)
     	{

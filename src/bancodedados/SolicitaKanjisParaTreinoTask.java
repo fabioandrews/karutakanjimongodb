@@ -60,7 +60,8 @@ public class SolicitaKanjisParaTreinoTask extends AsyncTask<String, String, Void
 		{
 			//era 192.168.0.109
 			//era 10.5.23.145 na ufrn
-			MongoClient mongo = new MongoClient("10.5.23.145", 27017);
+			//"192.168.0.101"
+			MongoClient mongo = new MongoClient("10.5.26.231", 27017);
 			DB db = mongo.getDB("pairg_karutakanji_app");
 			DBCollection collection = db.getCollection("jlpt");
 			this.cursor = collection.find();

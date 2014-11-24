@@ -6,7 +6,7 @@ public class DadosPartidaParaOLog
 {
 	private String email;
 	private String data;
-	private String categoria; //pode ser mais de uma categoria separadas por ; Ex: "cotidiano 1; verbos;"
+	private LinkedList<String> categoria; //pode ser mais de uma categoria separadas por ; Ex: "cotidiano 1; verbos;"
 	private int pontuacao;
 	private LinkedList<KanjiTreinar> palavrasAcertadas;
 	private LinkedList<KanjiTreinar> palavrasErradas;
@@ -27,10 +27,16 @@ public class DadosPartidaParaOLog
 	public void setData(String data) {
 		this.data = data;
 	}
-	public String getCategoria() {
-		return categoria;
+	public String getCategoriaEmString() {
+		String categoriaEmString = "";
+		for(int i = 0; i < this.categoria.size(); i++)
+		{
+			String umaCategoria = this.categoria.get(i);
+			categoriaEmString = categoriaEmString + umaCategoria + ";";
+		}
+		return categoriaEmString;
 	}
-	public void setCategoria(String categoria) {
+	public void setCategoria(LinkedList<String> categoria) {
 		this.categoria = categoria;
 	}
 	public int getPontuacao() {

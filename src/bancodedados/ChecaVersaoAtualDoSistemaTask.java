@@ -15,7 +15,7 @@ import com.karutakanji.MainActivity;
 
 public class ChecaVersaoAtualDoSistemaTask extends AsyncTask<String, String, Void> 
 {
-	private String versaoDoSistema = "0.1.6-beta";
+	private String versaoDoSistema = "0.1.7-beta";
 	private String versaoAtual; //aquela versao mais atual do jogo que iremos pegar no servidor remoto
 	private boolean usuarioEstaComVersaoMaisRecente;
 	private MainActivity activityMain;

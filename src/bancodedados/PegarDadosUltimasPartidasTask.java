@@ -59,8 +59,8 @@ public class PegarDadosUltimasPartidasTask extends AsyncTask<String, String, Voi
 
 	            // HttpClient is more then less deprecated. Need to change to URLConnection
 	            String emailjogador = emailJogador[0];
-	            
-	            MongoClient mongo = new MongoClient("192.168.0.109", 27017);
+	            //"192.168.0.101"
+	            MongoClient mongo = new MongoClient("10.5.26.231", 27017);
 				DB db = mongo.getDB("pairg_karutakanji_app");
 				DBCollection collection = db.getCollection("partidas");
 				DBObject searchByEMail = new BasicDBObject("email", emailjogador);
@@ -75,17 +75,18 @@ public class PegarDadosUltimasPartidasTask extends AsyncTask<String, String, Voi
 			
 			String email = (String) objetoDB.get("email");
 			String data = (String) objetoDB.get("data");
-			String categorias = (String) objetoDB.get("categoria");
+			BasicDBList categoria = (BasicDBList) objetoDB.get("categoria");
 			java.lang.Integer pontuacao = (java.lang.Integer) objetoDB.get("pontuacao");
-			String palavrasAcertadasString = (String) objetoDB.get("palavrasacertadas");
-			String palavrasErradasString = (String) objetoDB.get("palavraserradas");
+			BasicDBList palavrasAcertadasArray = (BasicDBList) objetoDB.get("palavrasacertadas");
+			BasicDBList palavrasErradasArray = (BasicDBList) objetoDB.get("palavraserradas");
 			BasicDBList palavrasJogadasArray = (BasicDBList) objetoDB.get("palavrasjogadas");
 			String jogoassociado = (String) objetoDB.get("jogoassociado");
 			String emailadversario = (String) objetoDB.get("emailadversario");
 			String voceganhououperdeu = (String) objetoDB.get("voceganhououperdeu");
 			
 			DadosPartidaParaOLog dadosLog = new DadosPartidaParaOLog();
-        	dadosLog.setCategoria(categorias);
+			LinkedList<String> categoriasTreinadas = this.extrairListaArray(categoria);
+        	dadosLog.setCategoria(categoriasTreinadas);
         	dadosLog.setData(data);
         	dadosLog.setEmail(email);
         	dadosLog.seteMailAdversario(emailadversario);
@@ -93,8 +94,8 @@ public class PegarDadosUltimasPartidasTask extends AsyncTask<String, String, Voi
         	dadosLog.setPontuacao(pontuacao);
         	dadosLog.setVoceGanhouOuPerdeu(voceganhououperdeu);
         	
-        	LinkedList<KanjiTreinar> palavrasAcertadas = extrairKanjisTreinar(palavrasAcertadasString);
-        	LinkedList<KanjiTreinar> palavrasErradas = extrairKanjisTreinar(palavrasErradasString);
+        	LinkedList<KanjiTreinar> palavrasAcertadas = extrairKanjisTreinarArray(palavrasAcertadasArray);
+        	LinkedList<KanjiTreinar> palavrasErradas = extrairKanjisTreinarArray(palavrasErradasArray);
         	LinkedList<KanjiTreinar> palavrasJogadas = extrairKanjisTreinarArray(palavrasJogadasArray);
         	dadosLog.setPalavrasAcertadas(palavrasAcertadas);
         	dadosLog.setPalavrasErradas(palavrasErradas);
@@ -144,22 +145,36 @@ public class PegarDadosUltimasPartidasTask extends AsyncTask<String, String, Voi
 		}
 	}
 	
+	/*pega a string do bd e transforma em montes de kanjis como era antes de enviar ao bd. Ex: au|verbos;kau|verbos...*/
 	private LinkedList<KanjiTreinar> extrairKanjisTreinarArray(BasicDBList kanjisECategoriasComBarra)
 	{
 		LinkedList<KanjiTreinar> kanjisTreinar = new LinkedList<KanjiTreinar>();
 		
 		for(int i = 0; i < kanjisECategoriasComBarra.size(); i++)
 		{
-			String umKanjiECategoria = (String)kanjisECategoriasComBarra.get(i);
-			String[] kanjiECategoria = umKanjiECategoria.split("\\|");
-			String kanji = kanjiECategoria[0];
-			String categoria = kanjiECategoria[1];
+			DBObject umKanjiECategoria = (DBObject)kanjisECategoriasComBarra.get(i);
+			String kanji = (String) umKanjiECategoria.get("kanji");
+			String categoria = (String) umKanjiECategoria.get("categoria");
 			
 			KanjiTreinar kanjiTreinar = ArmazenaKanjisPorCategoria.pegarInstancia().acharKanji(categoria, kanji);
 			kanjisTreinar.add(kanjiTreinar);
 		}
 		
 		return kanjisTreinar;
+		
+	}
+	
+	private LinkedList<String> extrairListaArray(BasicDBList listaEmDBList)
+	{
+		LinkedList<String> listaDoArray = new LinkedList<String>();
+		
+		for(int i = 0; i < listaEmDBList.size(); i++)
+		{
+			String umKanjiECategoria = (String)listaEmDBList.get(i);
+			listaDoArray.add(umKanjiECategoria);
+		}
+		
+		return listaDoArray;
 		
 	}
 
